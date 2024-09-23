@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Welcome {{ session['username'] }}</h2>
+<a href="{{ url_for('add') }}" class="btn btn-success mb-4">Add User</a>
+<a href="{{ url_for('login') }}" class="btn btn-success mb-4">Login</a>
+<a href="{{ url_for('logout') }}" class="btn btn-success mb-4">Logout</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Sno</th>
+            <th>Name</th>
+            <th>Fund Name</th>
+            <th>Invested Amount</th>
+            <th>Units Held</th>
+            <th>Current NAV</th>
+            <th>Current Value</th>
+            <th>Growth</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in user_list %}
+        <tr>
+            <td>{{ user.Sno }}</td>
+            <td>{{ user.Name }}</td>
+            <td>{{ user.Fundname }}</td>
+            <td>{{ user.Invested }}</td>
+            <td>{{ user.unitsheld }}</td>
+            <td>{{ user.Nav }}</td>
+            <td>{{ user.Currentvalue }}</td>
+            <td>{{ user.Growth }}</td>
+            <td>
+                <a href="{{ url_for('edit', Id=user.Sno) }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{{ url_for('delete', Id=user.Sno) }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

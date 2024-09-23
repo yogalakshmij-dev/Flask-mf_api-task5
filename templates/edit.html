@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block content %}
+<h2>Edit User</h2>
+<form method="POST" action="{{ url_for('edit', Id=datas[0]) }}">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ datas[1] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="funds">Fund Code</label>
+        <input type="text" class="form-control" id="funds" name="funds" value="{{ datas[2] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="invest">Invested Amount</label>
+        <input type="number" class="form-control" id="invest" name="invest" value="{{ datas[3] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="units">Units Held</label>
+        <input type="number" class="form-control" id="units" name="units" value="{{ datas[4] }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock %}
